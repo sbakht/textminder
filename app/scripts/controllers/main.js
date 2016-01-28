@@ -38,12 +38,24 @@ angular.module('twitterApp')
           return later.parse.recur().on(year).year().on(month).month().on(day).dayOfMonth().on(hour).hour().on(minute).minute();
       }
 
-      $scope.setReminder = function() {
-          var data = {number: $scope.number, message: $scope.message}
-          var sched = createSchedule();
-          console.log(later.schedule(sched).next(2));
-          later.setTimeout(text, sched);
+      function isFutureDate(date) {
+        return date - new Date() > 0;
+      }
 
+      function createDate() {
+          var date = new Date($scope.date);
+          date.setHours(to24Hour($scope.hour));
+          date.setMinutes($scope.minute);
+          return date;
+      }
+
+      $scope.setReminder = function() {
+          var date = createDate();
+          if(isFutureDate(date)) {
+              var data = {number: $scope.number, message: $scope.message}
+              var sched = createSchedule();
+              later.setTimeout(text, sched);
+          }
           function text() {
             textService.text(data);
           }
