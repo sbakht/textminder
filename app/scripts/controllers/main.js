@@ -28,15 +28,20 @@ angular.module('twitterApp')
       }
 
       function createSchedule() {
+          var date = new Date($scope.date);
+          var year = date.getFullYear();
+          var month = date.getMonth() + 1;
+          var day = date.getDate();
           var hour = to24Hour($scope.hour);
           var minute = parseInt($scope.minute);
           later.date.localTime();
-          return later.parse.recur().on(hour).hour().on(minute).minute();
+          return later.parse.recur().on(year).year().on(month).month().on(day).dayOfMonth().on(hour).hour().on(minute).minute();
       }
 
       $scope.setReminder = function() {
           var data = {number: $scope.number, message: $scope.message}
           var sched = createSchedule();
+          console.log(later.schedule(sched).next(2));
           later.setTimeout(text, sched);
 
           function text() {
