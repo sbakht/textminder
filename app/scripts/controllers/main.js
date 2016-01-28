@@ -8,10 +8,7 @@
  * Controller of the twitterApp
  */
 angular.module('twitterApp')
-  .controller('MainCtrl', function ($scope) {
-      $scope.hour = "08";
-      $scope.minute = "00";
-      $scope.apmpm = "PM";
+  .controller('MainCtrl', function ($scope, textService) {
       $scope.range = function(num) {
           var arr = [];
           for(var i = 0; i < num; i++) {
@@ -20,7 +17,7 @@ angular.module('twitterApp')
           return arr;
       };
       $scope.setReminder = function() {
-        console.log($scope.hour);
-        console.log($scope.number);
+          var data = {number: $scope.number, message: $scope.message}
+          textService.text(data);
       };
   });
