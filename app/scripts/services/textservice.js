@@ -9,8 +9,7 @@
  */
 angular.module('twitterApp')
   .service('textService', function ($http) {
-    var text = function() {
-        var data = {"number": "9082397630", message: "this is a test message"};
+    var text = function(data) {
         $http.post('http://textbelt.com/text', data).then(success, error);
 
         function success(response) {

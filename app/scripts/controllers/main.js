@@ -16,8 +16,15 @@ angular.module('twitterApp')
           }
           return arr;
       };
+      
       $scope.setReminder = function() {
           var data = {number: $scope.number, message: $scope.message}
-          textService.text(data);
+          var sched = later.parse.text('every 5 minutes');
+          later.setTimeout(text, sched);
+
+          function text() {
+            textService.text(data);
+          }
+
       };
   });
