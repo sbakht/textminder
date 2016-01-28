@@ -33,11 +33,11 @@
 
 <div class="row marketing" ng-controller="MainCtrl">
     <form ng-submit="setReminder()">
-        <select class="input" id="hour" ng-options="i for i in range(13)" ng-model="hour"></select>
-        <select class="input" id="minute" ng-options="i for i in range(61)" ng-model="minute"></select>
-        <select class="input" id="ampm" ng-model="ampm">
-            <option>AM</option>
-            <option>PM</option>
+        <select class="input" id="hour" ng-init="hour = '08'" ng-options="i for i in range(13)" ng-model="hour"></select>
+        <select class="input" id="minute" ng-init="minute = '00'" ng-options="i for i in range(61)" ng-model="minute"></select>
+        <select class="input" id="ampm" ng-init="ampm = 'PM'" ng-model="ampm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
         </select>
         <input class="input" ng-model="message" placeholder="Message..." maxlength=140 />
         <input class="input" type="text" ng-model="number" placeholder="(XXX)-XXX-XXXX" maxlength=10 />
