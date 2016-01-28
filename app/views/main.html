@@ -25,14 +25,19 @@
     background: rgba(0, 0, 0, 0.003); 
 }
 
-#hour, #minute, #ampm {
-    width:32.9%;
+#date {
+    padding-left: 30px;
+}
+
+#hour, #minute, #ampm, #date {
+    width:24.5%;
 }
 
 </style>
 
 <div class="row marketing" ng-controller="MainCtrl">
     <form ng-submit="setReminder()">
+        <input date-picker class="input" id="date" placeholder="01/28/2016" />
         <select class="input" id="hour" ng-init="hour = '08'" ng-options="i for i in range(13)" ng-model="hour"></select>
         <select class="input" id="minute" ng-init="minute = '00'" ng-options="i for i in range(60)" ng-model="minute"></select>
         <select class="input" id="ampm" ng-init="ampm = 'PM'" ng-model="ampm">
