@@ -110,10 +110,13 @@ body {
 
 #date {
     padding-left: 30px;
+    height: 62px;
 }
 
-#hour, #minute, #ampm, #date {
-    width:24.5%;
+@media(max-width:768px) {
+    #date {
+        padding-left: 60px;
+    }
 }
 
 #submit {
@@ -134,3 +137,8 @@ h1 {
 .container {
     margin-bottom:100px;
 }
+
+.col-sm-3 {
+    padding:0;
+}
+
