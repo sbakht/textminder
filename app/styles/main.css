@@ -83,7 +83,7 @@ body {
 }
 
 
-.input {
+.input, .output {
     position: relative;
     margin: 0;
     width: 100%;
@@ -102,14 +102,27 @@ body {
     font-smoothing: antialiased;
 }
 
-.input {
-    padding: 16px 16px 16px 60px;
+.input, .output {
+    padding: 16px 16px 16px 30px;
     border: none; 
     background: rgba(0, 0, 0, 0.003); 
 }
 
+.results {
+    margin-top:25px;
+}
+
+.output {
+    font-size:15px;
+    line-height:1.5em;
+}
+
+.close {
+    font-size:18px;
+    margin-top:10px;
+}
+
 #date {
-    padding-left: 30px;
     height: 62px;
 }
 

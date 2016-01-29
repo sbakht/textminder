@@ -24,6 +24,8 @@ angular.module('textminder')
     $scope.dates = {};
     $scope.dates.date = todayMonth + "/" + todayDay + "/" + todayYear;
 
+    $scope.schedules = [];
+
     $scope.range = function(num) {
         var arr = [];
         for(var i = 0; i < num; i++) {
@@ -63,12 +65,28 @@ angular.module('textminder')
     $scope.setReminder = function() {
         var date = createDate();
         var sched = createSchedule();
-        later.setTimeout(text, sched);
+        var timer = later.setTimeout(text, sched);
+        $scope.schedules.push({
+            date: $scope.dates.date,
+            hour: $scope.dates.hour,
+            minute: $scope.dates.minute,
+            ampm: $scope.dates.ampm,
+            number: $scope.number,
+            message: $scope.message,
+            timer: timer
+        });
 
         function text() {
             var data = {number: $scope.number, message: $scope.message}
             textService.text(data);
         }
+    };
 
+    $scope.deleteReminder = function(schedule) {
+        var index = $scope.schedules.indexOf(schedule);
+        $scope.schedules[index].timer.clear();
+        if(index != -1) {
+            $scope.schedules.splice(index, 1);
+        }
     };
 });

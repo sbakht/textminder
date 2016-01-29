@@ -30,6 +30,22 @@
                 </div>
             </div>
         </form>
+        <div class="row results">
+            <div class="output col-sm-12" ng-repeat="schedule in schedules">
+                <div class="col-sm-3">
+                    {{schedule.date}}
+                    {{schedule.hour}}:{{schedule.minute}}
+                    {{schedule.ampm}}
+                    {{schedule.number}}
+                </div>
+                <div class="col-sm-8">
+                    {{schedule.message}}
+                </div>
+                <div class="close col-sm-1" ng-click="deleteReminder(schedule)">
+                    X
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
