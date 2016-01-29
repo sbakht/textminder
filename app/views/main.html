@@ -55,7 +55,7 @@ h1 {
     </div>
     <form name="reminderForm" ng-submit="setReminder()">
         <div date-validate ng-model="dates">
-            <input date-picker only-digits class="input" id="date" ng- ng-model="dates.date" ng-change="validateDate()" placeholder="01/28/2016" required />
+            <input date-picker only-digits class="input" id="date" ng- ng-model="dates.date" ng-change="validateDate()" placeholder="XX/XX/XXXX" required />
             <select class="input" id="hour" ng-init="dates.hour = '08'" ng-options="i for i in range(13)" ng-model="dates.hour" required></select>
             <select class="input" id="minute" ng-init="dates.minute = '00'" ng-options="i for i in range(60)" ng-model="dates.minute" required></select>
             <select class="input" id="ampm" ng-init="dates.ampm = 'PM'" ng-model="dates.ampm" required>
