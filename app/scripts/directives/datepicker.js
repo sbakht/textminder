@@ -7,16 +7,17 @@
  * # datePicker
  */
 angular.module('twitterApp')
-  .directive('datePicker', function () {
+.directive('datePicker', function () {
     return {
-      restrict: 'A',
-      link: function postLink(scope, element, attrs, ngModelCtrl) {
-          $(element).datepicker({
-              onSelect: function(dateText) {
-                  scope.date = dateText;
-                  scope.$apply();
-              }
-          });
-      }
+        restrict: 'A',
+        require: 'ngModel',
+        link: function postLink(scope, element, attrs, ngModel) {
+            $(element).datepicker({
+                onSelect: function(dateText) {
+                    scope.dates.date = dateText;
+                    scope.$apply();
+                }
+            });
+        }
     };
-  });
+});
