@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name twitterApp.directive:onlyDigits
+ * @name textminder.directive:onlyDigits
  * @description
  * # onlyDigits
  */
-angular.module('twitterApp')
+angular.module('textminder')
 .directive('onlyDigits', function () {
     return {
         restrict: 'A',

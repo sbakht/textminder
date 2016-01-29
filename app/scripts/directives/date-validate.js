@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name twitterApp.directive:dateValidate
+ * @name textminder.directive:dateValidate
  * @description
  * # dateValidate
  */
-angular.module('twitterApp')
+angular.module('textminder')
 .directive('dateValidate', function () {
     return {
         restrict: 'A',

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name twitterApp.controller:MainCtrl
+ * @name textminder.controller:MainCtrl
  * @description
  * # MainCtrl
  * Controller of the twitterApp
  */
-angular.module('twitterApp')
+angular.module('textminder')
 .controller('MainCtrl', function ($scope, textService) {
     $scope.dates = {};
     $scope.range = function(num) {

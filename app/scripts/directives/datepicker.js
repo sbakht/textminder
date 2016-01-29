@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name twitterApp.directive:datePicker
+ * @name textminder.directive:datePicker
  * @description
  * # datePicker
  */
-angular.module('twitterApp')
+angular.module('textminder')
 .directive('datePicker', function () {
     return {
         restrict: 'A',

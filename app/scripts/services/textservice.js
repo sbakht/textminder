@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name twitterApp.textService
+ * @name textminder.textService
  * @description
  * # textService
- * Service in the twitterApp.
+ * Service in the textminder.
  */
-angular.module('twitterApp')
+angular.module('textminder')
   .service('textService', function ($http) {
     var text = function(data) {
         $http.post('http://textbelt.com/text', data).then(success, error);
