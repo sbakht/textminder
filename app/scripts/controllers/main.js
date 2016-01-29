@@ -76,6 +76,8 @@ angular.module('textminder')
             timer: timer
         });
 
+        $scope.message = "";
+
         function text() {
             var data = {number: $scope.number, message: $scope.message}
             textService.text(data);
