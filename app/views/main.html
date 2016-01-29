@@ -1,32 +1,40 @@
-<div class="row marketing" ng-controller="MainCtrl">
-    <div class="text-center">
-        <h1>Textminder</h1>
-        <p id="description">Remind yourself with a friendly text from the future!</p>
+<div class="container">
+    <div class="row marketing" ng-controller="MainCtrl">
+        <div class="text-center">
+            <h1>Textminder</h1>
+            <p id="description">Remind yourself with a friendly text from the future!</p>
+        </div>
+        <form name="reminderForm" ng-submit="setReminder()">
+            <div date-validate class="row date" ng-model="dates">
+                <div class="col-sm-3">
+                    <input date-picker only-digits class="input" id="date" ng- ng-model="dates.date" ng-change="validateDate()" placeholder="XX/XX/XXXX" required />
+                </div>
+                <div class="col-sm-3">
+                    <select class="input" id="hour" ng-init="dates.hour = '08'" ng-options="i for i in range(13)" ng-model="dates.hour" required></select>
+                </div>
+                <div class="col-sm-3">
+                    <select class="input" id="minute" ng-init="dates.minute = '00'" ng-options="i for i in range(60)" ng-model="dates.minute" required></select>
+                </div>
+                <div class="col-sm-3">
+                    <select class="input" id="ampm" ng-init="dates.ampm = 'PM'" ng-model="dates.ampm" required>
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <input class="input" ng-model="message" placeholder="Message..." maxlength=140 required />
+                <input only-digits class="input" type="text" ng-model="number" placeholder="(XXX)-XXX-XXXX" maxlength=10 required />
+                <div class="text-center">
+                    <input id="submit" type="submit" class="btn btn-success" ng-disabled="reminderForm.$invalid"/>
+                </div>
+            </div>
+        </form>
     </div>
-    <form name="reminderForm" ng-submit="setReminder()">
-        <div date-validate class="row date" ng-model="dates">
-            <div class="col-sm-3">
-                <input date-picker only-digits class="input" id="date" ng- ng-model="dates.date" ng-change="validateDate()" placeholder="XX/XX/XXXX" required />
-            </div>
-            <div class="col-sm-3">
-                <select class="input" id="hour" ng-init="dates.hour = '08'" ng-options="i for i in range(13)" ng-model="dates.hour" required></select>
-            </div>
-            <div class="col-sm-3">
-                <select class="input" id="minute" ng-init="dates.minute = '00'" ng-options="i for i in range(60)" ng-model="dates.minute" required></select>
-            </div>
-            <div class="col-sm-3">
-                <select class="input" id="ampm" ng-init="dates.ampm = 'PM'" ng-model="dates.ampm" required>
-                    <option value="AM">AM</option>
-                    <option value="PM">PM</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <input class="input" ng-model="message" placeholder="Message..." maxlength=140 required />
-            <input only-digits class="input" type="text" ng-model="number" placeholder="(XXX)-XXX-XXXX" maxlength=10 required />
-            <div class="text-center">
-                <input id="submit" type="submit" class="btn btn-success" ng-disabled="reminderForm.$invalid"/>
-            </div>
-        </div>
-    </form>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <p><span class="glyphicon glyphicon-question-sign"></span> <a href="https://github.com/sbakht/textminder">source on github</a></p>
+    </div>
 </div>
