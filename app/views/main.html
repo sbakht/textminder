@@ -42,8 +42,12 @@
 h1 {
     color: #6d6d6d;
     font-size:54px;
+    margin-bottom:0;
 }
-
+#description {
+    color:#6d6d6d;
+    margin-bottom:40px
+}
 .container {
     margin-bottom:100px;
 }
@@ -52,6 +56,7 @@ h1 {
 <div class="row marketing" ng-controller="MainCtrl">
     <div class="text-center">
         <h1>Textminder</h1>
+        <p id="description">Remind yourself with a friendly text from the future!</p>
     </div>
     <form name="reminderForm" ng-submit="setReminder()">
         <div date-validate ng-model="dates">
