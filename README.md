@@ -1,12 +1,9 @@
-# twitter
+# Textminder
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.12.1.
+Remind yourself with a friendly text from the future!
 
-## Build & development
+This small web app allows you send a text message to a number at a any given time in the future.
 
-Run `grunt` for building and `grunt serve` for preview.
+It uses [Textbelt](http://textbelt.com) api for sending messages which could cause failures if too many messages are sent or to an unsupported carrier.
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+It uses [Later](https://github.com/bunkat/later) for scheduling of sending the messages.
