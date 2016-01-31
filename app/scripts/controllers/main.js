@@ -8,7 +8,7 @@
  * Controller of the twitterApp
  */
 angular.module('textminder')
-.controller('MainCtrl', function ($scope, textService) {
+.controller('MainCtrl', function ($scope, textService, schedule) {
 
     var today = new Date();
     var todayMonth = today.getMonth() + 1;
@@ -34,37 +34,11 @@ angular.module('textminder')
         return arr;
     };
 
-    function to24Hour(hour) {
-        if($scope.ampm == "AM") {
-            return parseInt(hour); 
-        }
-        if(hour != 12) {
-            return 12 + parseInt(hour);
-        }
-        return 0;
-    }
-
-    function createSchedule() {
-        var date = new Date($scope.dates.date);
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        var hour = to24Hour($scope.dates.hour);
-        var minute = parseInt($scope.dates.minute);
-        later.date.localTime();
-        return later.parse.recur().on(year).year().on(month).month().on(day).dayOfMonth().on(hour).hour().on(minute).minute();
-    }
-
-    function createDate() {
-        var date = new Date($scope.dates.date);
-        date.setHours(to24Hour($scope.dates.hour));
-        date.setMinutes($scope.dates.minute);
-        return date;
-    }
 
     $scope.setReminder = function() {
-        var date = createDate();
-        var sched = createSchedule();
+        var sched = schedule.createSchedule($scope.dates);
+        console.log(later.schedule(sched).next(2));
+
         var timer = later.setTimeout(text, sched);
         $scope.schedules.push({
             date: $scope.dates.date,
