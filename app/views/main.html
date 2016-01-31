@@ -4,7 +4,7 @@
             <h1>Textminder</h1>
             <p id="description">Remind yourself with a friendly text from the future!</p>
         </div>
-        <form name="reminderForm" ng-submit="setReminder()">
+        <form name="reminderForm" ng-submit="addReminder(newReminder)">
             <div date-validate class="row date" ng-model="dates">
                 <div class="col-sm-3">
                     <input date-picker only-digits class="input" id="date" ng- ng-model="dates.date" ng-change="validateDate()" placeholder="XX/XX/XXXX" required />
@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div class="row">
-                <input class="input" ng-model="message" placeholder="Message..." maxlength=140 required />
-                <input only-digits class="input" type="text" ng-model="number" placeholder="(XXX)-XXX-XXXX" maxlength=10 required />
+                <input class="input" ng-model="newReminder.message" placeholder="Message..." maxlength=140 required />
+                <input only-digits class="input" type="text" ng-model="newReminder.number" placeholder="(XXX)-XXX-XXXX" maxlength=10 required />
                 <div class="text-center">
                     <input id="submit" type="submit" class="btn btn-success" ng-disabled="reminderForm.$invalid"/>
                 </div>

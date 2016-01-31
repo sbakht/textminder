@@ -24,6 +24,7 @@ angular.module('textminder')
     $scope.dates = {};
     $scope.dates.date = todayMonth + "/" + todayDay + "/" + todayYear;
 
+    $scope.newReminder = { when : $scope.dates};
     $scope.reminders = schedule.reminders;
 
     $scope.range = function(num) {
@@ -34,9 +35,8 @@ angular.module('textminder')
         return arr;
     };
 
-
-    $scope.setReminder = function() {
-        schedule.addReminder($scope.dates, $scope.number, $scope.message);
+    $scope.addReminder = function(reminder) {
+        schedule.addReminder(reminder);
         $scope.message = "";
     };
 

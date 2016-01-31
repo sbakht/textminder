@@ -33,23 +33,24 @@ angular.module('textminder')
         return later.parse.recur().on(year).year().on(month).month().on(day).dayOfMonth().on(hour).hour().on(minute).minute();
     }
 
-    var addReminder = function(obj, number, message) {
-        var sched = createSchedule(obj);
+    var addReminder = function(obj) {
+        var when = obj.when;
+        var sched = createSchedule(when);
         console.log(later.schedule(sched).next(2));
 
         var timer = later.setTimeout(text, sched);
         reminders.push({
-            date: obj.date,
-            hour: obj.hour,
-            minute: obj.minute,
-            ampm: obj.ampm,
-            number: number,
-            message: message,
+            date: when.date,
+            hour: when.hour,
+            minute: when.minute,
+            ampm: when.ampm,
+            number: obj.number,
+            message: obj.message,
             timer: timer
         });
 
         function text() {
-            var data = {number: number, message: message}
+            var data = {number: obj.number, message: obj.message}
             textService.text(data);
         }
 
