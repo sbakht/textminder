@@ -40,11 +40,7 @@ angular.module('textminder')
         $scope.message = "";
     };
 
-    $scope.deleteReminder = function(schedule) {
-        var index = $scope.reminders.indexOf(schedule);
-        $scope.reminders[index].timer.clear();
-        if(index != -1) {
-            $scope.reminders.splice(index, 1);
-        }
+    $scope.removeReminder = function(reminder) {
+        schedule.removeReminder(reminder);
     };
 });

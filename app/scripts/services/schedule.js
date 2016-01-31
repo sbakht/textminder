@@ -55,8 +55,17 @@ angular.module('textminder')
 
     }
 
+    var removeReminder = function(reminder) {
+        var index = reminders.indexOf(reminder);
+        reminders[index].timer.clear();
+        if(index != -1) {
+            reminders.splice(index, 1);
+        }
+    }
+
     return {
+      reminders : reminders,
       addReminder: addReminder,
-      reminders : reminders
+      removeReminder: removeReminder
     };
   });
