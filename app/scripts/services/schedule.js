@@ -8,7 +8,9 @@
  * Factory in the textminder.
  */
 angular.module('textminder')
-  .factory('schedule', function () {
+  .factory('schedule', function (textService) {
+
+    var reminders = [];
 
     function to24Hour(obj) {
         if(obj.ampm == "AM") {
@@ -20,7 +22,7 @@ angular.module('textminder')
         return 0;
     }
 
-    var createSchedule = function(obj) {
+    function createSchedule(obj) {
         var date = new Date(obj.date);
         var year = date.getFullYear();
         var month = date.getMonth() + 1;
@@ -31,7 +33,30 @@ angular.module('textminder')
         return later.parse.recur().on(year).year().on(month).month().on(day).dayOfMonth().on(hour).hour().on(minute).minute();
     }
 
+    var addReminder = function(obj, number, message) {
+        var sched = createSchedule(obj);
+        console.log(later.schedule(sched).next(2));
+
+        var timer = later.setTimeout(text, sched);
+        reminders.push({
+            date: obj.date,
+            hour: obj.hour,
+            minute: obj.minute,
+            ampm: obj.ampm,
+            number: number,
+            message: message,
+            timer: timer
+        });
+
+        function text() {
+            var data = {number: number, message: message}
+            textService.text(data);
+        }
+
+    }
+
     return {
-      createSchedule: createSchedule
+      addReminder: addReminder,
+      reminders : reminders
     };
   });
